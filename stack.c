@@ -106,12 +106,10 @@ int main()
                     printf("Enter the item: ");
                     scanf("%d", &item);
                     push(item);
-                    display();
                     break;
 
                 case 2:
                     pop();
-                    display();
                     break;
 
                 case 3:

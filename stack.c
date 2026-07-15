@@ -10,12 +10,13 @@ void push(int item)
     if (top == MAX - 1)
     {
         printf("Stack Overflow!\n");
-        return;
     }
-
-    top++;
-    stack[top] = item;
-    printf("%d pushed successfully.\n", item);
+    else
+    {
+        top++;
+        stack[top] = item;
+        printf("%d pushed successfully.\n", item);
+    }
 }
 
 void pop()
@@ -23,11 +24,12 @@ void pop()
     if (top == -1)
     {
         printf("Stack Underflow!\n");
-        return;
     }
-
-    printf("%d popped successfully.\n", stack[top]);
-    top--;
+    else
+    {
+        printf("%d popped successfully.\n", stack[top]);
+        top--;
+    }
 }
 
 void peek()
@@ -49,17 +51,18 @@ void display()
     if (top == -1)
     {
         printf("Stack is empty.\n");
-        return;
     }
-
-    printf("Stack elements (Top to Bottom): ");
-
-    for (i = top; i >= 0; i--)
+    else
     {
-        printf("%d ", stack[i]);
-    }
+        printf("Stack elements (Top to Bottom): ");
 
-    printf("\n");
+        for (i = top; i >= 0; i--)
+        {
+            printf("%d ", stack[i]);
+        }
+
+        printf("\n");
+    }
 }
 
 int main()
@@ -75,58 +78,60 @@ int main()
         printf("Stack size exceeds maximum limit (%d).\n", MAX);
         return 0;
     }
-
-    printf("Enter the elements:\n");
-
-    for (i = 0; i < n; i++)
+    else
     {
-        scanf("%d", &stack[i]);
-        top++;
-    }
+        printf("Enter the elements:\n");
 
-    do
-    {
-        printf("\n===== STACK MENU =====\n");
-        printf("1. Push\n");
-        printf("2. Pop\n");
-        printf("3. Peek\n");
-        printf("4. Display\n");
-        printf("5. Exit\n");
-
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice)
+        for (i = 0; i < n; i++)
         {
-            case 1:
-                printf("Enter the item: ");
-                scanf("%d", &item);
-                push(item);
-                display();
-                break;
-
-            case 2:
-                pop();
-                display();
-                break;
-
-            case 3:
-                peek();
-                break;
-
-            case 4:
-                display();
-                break;
-
-            case 5:
-                printf("Exiting...\n");
-                break;
-
-            default:
-                printf("Invalid Choice! Please try again.\n");
+            scanf("%d", &stack[i]);
+            top++;
         }
 
-    } while (choice != 5);
+        do
+        {
+            printf("\n===== STACK MENU =====\n");
+            printf("1. Push\n");
+            printf("2. Pop\n");
+            printf("3. Peek\n");
+            printf("4. Display\n");
+            printf("5. Exit\n");
+
+            printf("Enter your choice: ");
+            scanf("%d", &choice);
+
+            switch (choice)
+            {
+                case 1:
+                    printf("Enter the item: ");
+                    scanf("%d", &item);
+                    push(item);
+                    display();
+                    break;
+
+                case 2:
+                    pop();
+                    display();
+                    break;
+
+                case 3:
+                    peek();
+                    break;
+
+                case 4:
+                    display();
+                    break;
+
+                case 5:
+                    printf("Exiting...\n");
+                    break;
+
+                default:
+                    printf("Invalid Choice!\n");
+            }
+
+        } while (choice != 5);
+    }
 
     return 0;
 }
